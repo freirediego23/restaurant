@@ -1,5 +1,5 @@
 const express = require('express')
-const path = require('path')
+//const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const { Pool } = require("pg");
@@ -11,7 +11,7 @@ const pool = new Pool({connectionString: connectionString});
 
 
 express()
-  .use(express.static(path.join(__dirname, 'public')))
+  //.use(express.static(path.join(__dirname, 'public')))
 //   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/index', handleRest)
