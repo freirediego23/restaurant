@@ -13,27 +13,28 @@ const pool = new Pool({connectionString: connectionString});
 express()
   //.use(express.static(path.join(__dirname, 'public')))
 //   .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
   .get('/index', handleRest)
+  .set('view engine', 'ejs')
+  
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
   function handleRest () {
 
-var sql = "SELECT * FROM restaurant";
+    var sql = "SELECT * FROM restaurant";
 
-pool.query(sql, function(err, result) {
-    //if error occurs
-    if(err) {
-        console.log("Error in query: ")
-        console.log(err);
+    pool.query(sql, function(err, result) {
+        //if error occurs
+        if(err) {
+            console.log("Error in query: ")
+            console.log(err);
+        }
+
+        // Log this to the console for debugging purposes.
+        console.log("Back from DB with result:");
+        console.log(result.rows);
+
+
+    });
+
     }
-
-    // Log this to the console for debugging purposes.
-    console.log("Back from DB with result:");
-    console.log(result.rows);
-
-
-});
-
-}
