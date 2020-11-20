@@ -13,14 +13,13 @@ const pool = new Pool({connectionString: connectionString});
 express()
   //.use(express.static(path.join(__dirname, 'public')))
 //   .set('views', path.join(__dirname, 'views'))
-  .get('/index', handleRest)
+  .get('/index')
   .set('view engine', 'ejs')
   
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-  function handleRest () {
-
+  
     var sql = "SELECT * FROM restaurant";
 
     pool.query(sql, function(err, result) {
@@ -37,4 +36,4 @@ express()
 
     });
 
-    }
+    
