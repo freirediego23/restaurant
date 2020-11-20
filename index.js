@@ -30,8 +30,8 @@ express()
 
         // Log this to the console for debugging purposes.
         console.log("Back from DB with result:");
-        res.send(JSON.stringify(result.columns));
-
+        var a = res.send(JSON.stringify(result.columns));
+        document.getElementById('list').innerHTML = a;
 
     });
 
